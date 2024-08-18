@@ -48,7 +48,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }
 
     if (pilotCheck === "Not a Number" || copilotCheck === "Not a Number"){
-        alert("Pilot and Co-pilot names must be strings")
+        alert("Pilot and Co pilot names must be strings.")
         return;
     }
 
