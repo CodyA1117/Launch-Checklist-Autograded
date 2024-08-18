@@ -15,7 +15,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
             <li>Distance from Earth: ${distance}</li>
             <li>Number of Moons: ${moons}</li>
         </ol>
-        <img src = "${imgeUrl}">`;
+        <img src = "${imageUrl}">`;
 
 }
     // Here is the HTML formatting for our mission target div.
@@ -51,13 +51,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     return "Invalid Input";
 
  }
-     
-
-
-
-    
-
-
 
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -73,7 +66,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (pilotCheck === "Not a Number" || copilotCheck === "Not a Number"){
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch.`;
-        document.getElementById("copilotStatus").innerHTML = `Pilot ${copilot} is ready for launch.`;
+        document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch.`;
     } else {
         alert("Pilot and Co pilot names must be strings.")
         return;
@@ -94,27 +87,27 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let cargoStatus = "";
 
     if (Number(fuelLevel < 10000)){
-        fuelStatus = "not enough fuel"
+        fuelStatus = "Fuel level too low for launch"
     } else {
-        fuelStatus = "Fuel is good for launch!"
+        fuelStatus = "Fuel level high enough for launch"
     }
     
     if (Number(cargoLevel > 10000)){
-        cargoStatus = "bad"
+        cargoStatus = "Cargo mass too heavy for launch"
     } else {
-        cargoStatus = "good"
+        cargoStatus = "Cargo mass low enough for launch"
     }
     document.getElementById("fuelStatus").innerHTML = fuelStatus;
     document.getElementById("cargoStatus").innerHTML = cargoStatus;
 
-    if(fuelStatus.includes("not enough fuel") || cargoStatus.includes("bad")){
+    if(fuelStatus.includes("too low") || cargoStatus.includes("too heavy")){
         launchStatusElement.innerHTML = "Shuttle Not Ready for Launch";
         launchStatusElement.style.color = "red";
         faultyItemsElement.style.visibility = "visible";
     } else {
         launchStatusElement.innerHTML = "Shuttle is Ready for Launch";
         launchStatusElement.style.color = "green";
-        faultyItemsElement.style.visibility = "hidden";
+        faultyItemsElement.style.visibility = "visible";
     }
 
     
