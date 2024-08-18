@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { formSubmission, pickPlanet } = require("./scriptHelper");
+const { formSubmission, pickPlanet, addDestinationInfo } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
@@ -23,12 +23,19 @@ window.addEventListener("load", function() {
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
       let listedPlanets = result;
+      let selectedPlanet = pickPlanet(listedPlanets);
+      addDestinationInfo(
+        document,
+        selectedPlanet.name,
+        selectedPlanet.diameter,
+        selectedPlanet.star,
+        selectedPlanet.distance,
+        selectedPlanet.moons,
+        selectedPlanet.image
+      );
 
-        console.log(listedPlanets);
-
-        let selectedPlanet = pickPlanet(listedPlanets);
-    }).then(function () {
-        console.log(listedPlanets);
+    }).catch(function (error) {
+        console.error("Error fetching planets: ", error);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         
     })

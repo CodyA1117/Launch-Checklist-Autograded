@@ -30,24 +30,33 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="">
     */
-   
+
  
  function validateInput(testInput) {
-     if (testInput === "" || testInput.trim() ===""){
-        return "Empty"
-     } else if (isNaN(testInput)){
-        return "Not a Number";
+    if (typeof testInput === "string") {
+        if (testInput.trim() === "") {
+            return "Empty";
+        } else if (isNaN(Number(testInput))) {
+            return "Not a Number";
+        } else {
+            return "Is a Number";
+        }
+    } else if (typeof testInput === "number") {
+        if (isNaN(testInput)) {
+            return "Not a Number";
+        } else {
+            return "Is a Number";
+        }
+    }
+    return "Invalid Input";
 
-     } else {
-        return "Is a Number"
-     }
-
+ }
      
 
 
 
     
- }
+
 
 
  
@@ -55,7 +64,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let pilotCheck = validateInput(pilot);
     let copilotCheck = validateInput(copilot);
     let fuelCheck = validateInput(fuelLevel);
-    let cargoCheck = validateInput(cargoMass);
+    let cargoCheck = validateInput(cargoLevel);
 
     if (pilotCheck === "Empty" || copilotCheck === "Empty" || fuelCheck === "Empty" || cargoCheck === "Empty"){
        alert("All fields are required.");
@@ -90,7 +99,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         fuelStatus = "Fuel is good for launch!"
     }
     
-    if (Number(cargoStatus > 10000)){
+    if (Number(cargoLevel > 10000)){
         cargoStatus = "bad"
     } else {
         cargoStatus = "good"
@@ -99,11 +108,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     document.getElementById("cargoStatus").innerHTML = cargoStatus;
 
     if(fuelStatus.includes("not enough fuel") || cargoStatus.includes("bad")){
-        launchStatusElement.innerHTML = "Shuttle not ready for launch";
+        launchStatusElement.innerHTML = "Shuttle Not Ready for Launch";
         launchStatusElement.style.color = "red";
-        faultyItemsElement.style.visability = "visible";
+        faultyItemsElement.style.visibility = "visible";
     } else {
-        launchStatusElement.innerHTML = "Shuttle is ready for launch";
+        launchStatusElement.innerHTML = "Shuttle is Ready for Launch";
         launchStatusElement.style.color = "green";
         faultyItemsElement.style.visibility = "hidden";
     }
