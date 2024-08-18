@@ -48,9 +48,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }
 
     if (pilotCheck === "Not a Number" || copilotCheck === "Not a Number"){
+        document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch.`;
+        document.getElementById("copilotStatus").innerHTML = `Pilot ${copilot} is ready for launch.`;
+    } else {
         alert("Pilot and Co pilot names must be strings.")
         return;
+
     }
+    
 
 
     if (fuelCheck === "Not a Number" || cargoCheck === "Not a Number") {
@@ -58,7 +63,41 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return;
     }
 
- }
+    const launchStatusElement = document.getElementById('launchStatus');
+    const faultyItemsElement = document.getElementById('faultyItems');
+
+    let fuelStatus = "";
+    let cargoStatus = "";
+
+    if (Number(fuelLevel < 10000)){
+        fuelStatus = "not enough fuel"
+    } else {
+        fuelStatus = "Fuel is good for launch!"
+    }
+    
+    if (Number(cargoStatus > 10000)){
+        cargoStatus = "bad"
+    } else {
+        cargoStatus = "good"
+    }
+    document.getElementById("fuelStatus").innerHTML = fuelStatus;
+    document.getElementById("cargoStatus").innerHTML = cargoStatus;
+
+    if(fuelStatus.includes("not enough fuel") || cargoStatus.includes("bad")){
+        launchStatusElement.innerHTML = "Shuttle not ready for launch";
+        launchStatusElement.style.color = "red";
+        faultyItemsElement.style.visability = "visible";
+    } else {
+        launchStatusElement.innerHTML = "Shuttle is ready for launch";
+        launchStatusElement.style.color = "green";
+        faultyItemsElement.style.visibility = "hidden";
+    }
+
+    
+
+ };
+
+
  
  async function myFetch() {
      let planetsReturned;
