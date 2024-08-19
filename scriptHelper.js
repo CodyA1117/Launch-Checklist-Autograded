@@ -1,6 +1,6 @@
 // Write your helper functions here!
 
-require('cross-fetch/polyfill');
+require ('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     const missionTarget = document.getElementById("missionTarget");
@@ -32,7 +32,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     */
 
  
- function validateInput(testInput) {
+function validateInput(testInput) {
     if (typeof testInput === "string") {
         if (testInput.trim() === "") {
             return "Empty";
@@ -53,7 +53,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
 
  
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let pilotCheck = validateInput(pilot);
     let copilotCheck = validateInput(copilot);
     let fuelCheck = validateInput(fuelLevel);
@@ -116,7 +116,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 
  
- async function myFetch() {
+async function myFetch() {
      let planetsReturned;
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
@@ -126,7 +126,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
      return planetsReturned;
  }
  
- function pickPlanet(planets) {
+function pickPlanet(planets) {
     let index = Math.floor(Math.random()* planets.length);
     return planets[index];
  }
