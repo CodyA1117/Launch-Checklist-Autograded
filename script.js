@@ -13,8 +13,10 @@ window.addEventListener("load", function() {
     const fuelLevel = document.querySelector('input[name="fuelLevel"]').value;
     const cargoMass = document.querySelector('input[name="cargoMass"]').value;
 
+    const faultyItemsList = document.getElementById('faultyItems')
 
-    formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass);
+
+    formSubmission(document, faultyItemsList, pilotName, copilotName, fuelLevel, cargoMass);
 
     });
 

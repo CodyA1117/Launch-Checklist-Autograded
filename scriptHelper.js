@@ -53,7 +53,7 @@ function validateInput(testInput) {
  }
 
  
-function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let pilotCheck = validateInput(pilot);
     let copilotCheck = validateInput(copilot);
     let fuelCheck = validateInput(fuelLevel);
@@ -64,7 +64,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
        return ;
     }
 
-    if (pilotCheck === "Not a Number" && copilotCheck === "Not a Number"){
+    if (pilotCheck === "Not a Number" || copilotCheck === "Not a Number"){
         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch.`;
         document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch.`;
     } else {
